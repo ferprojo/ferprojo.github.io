@@ -1,0 +1,29 @@
+<div class="container">
+    <mat-card class="chatroomCard" style="max-height: 70%;">
+        <mat-card-header>
+            <mat-card-title>Chatroom</mat-card-title>
+        </mat-card-header>
+        <mat-card-content style="background-color: #7591adF0;">
+            <div style="max-height: 500px; overflow-y: scroll; padding: 5px;">
+                <div  *ngFor="let message of this.messages" style="width: 100%;">
+
+                    <div style="background-color: #223f5d; width: 50%; max-width: 50%; float: right; clear: both; margin-bottom: 15px; border-radius: 10px; padding: 5px;" *ngIf="this.user != null && this.user.Username == message.Author">
+                        <div style="text-align: left; color: white; font-size: x-small; margin-bottom: 1px;">By: {{message.Author}}</div>
+                        <p style="text-align: left; width: 100%">{{message.Message}}</p>
+                        <p style="text-align: right; color: white; font-size: x-small; margin-bottom: 1px;">{{message.Date.toDate()}}</p>
+                    </div>
+                    <div style="background-color: #6d58a3; width: 50%; max-width: 50%; float: left; clear: both; margin-bottom: 15px; border-radius: 10px; padding: 5px;" *ngIf="this.user == null || this.user.Username != message.Author">
+                        <div style="text-align: left; color: white; font-size: x-small; margin-bottom: 1px;">By: {{message.Author}}</div>
+                        <p style="text-align: left; width: 100%">{{message.Message}}</p>
+                        <p style="text-align: right; color: white; font-size: x-small; margin-bottom: 1px;">{{message.Date.toDate()}}</p>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; margin: auto; display: flex; justify-content: center; align-items: center; height: 20%;" *ngIf="this.user != null && this.user.Username != null">
+                <textarea style="margin-top: 10px; width: 100%; display: inline-block; resize: none; height: 100%; background-color: #223f5dAA; color: white;" [(ngModel)]="this.newMessage"></textarea>
+                <button mat-flat-button style="margin-top: 10px; width: 100%; height: 100%; display: inline-block; flex: 1 1 20%; background-color: #6d58a3;" (click)="sendMessage()">Send</button>
+            </div>
+            
+        </mat-card-content>
+    </mat-card>
+</div>

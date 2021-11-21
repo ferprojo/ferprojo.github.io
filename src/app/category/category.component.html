@@ -1,0 +1,12 @@
+<div class="container" *ngIf="this.guides">
+    <mat-card class="guidesCard">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                <li *ngFor="let guide of guides" class="guideItem" (click)="openGuide(guide.ID)">{{guide.Title}}</li>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</div>

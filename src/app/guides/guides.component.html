@@ -1,0 +1,12 @@
+<div class="container">
+    <mat-card class="guidesCard">
+        <mat-card-header>
+            <mat-card-title>Categories</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                <li *ngFor="let category of categories" (click)="openCategory(category.Category)" class="categoryItem">{{category.Category}}</li>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,12 @@
+<div class="container">
+    <mat-card class="forumCard">
+        <mat-card-header>
+            <mat-card-title>Forums</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                <li *ngFor="let forum of forums" class="forumItem" (click)="openForum(forum.ForumName)">{{forum.ForumName}}</li>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</div>

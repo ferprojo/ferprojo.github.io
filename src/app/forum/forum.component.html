@@ -1,0 +1,12 @@
+<div class="container">
+    <mat-card class="forumCard">
+        <mat-card-header>
+            <mat-card-title>Threads</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                <li *ngFor="let thread of threads" class="threadItem" (click)="openThread(thread.ID)">{{thread.Title}}</li>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,41 @@
+
+<mat-card class="loginCard" style="padding-top: 20px;">
+    <mat-card-title *ngIf="this.creatingUser == false" style="margin-bottom: 50px;">Log In</mat-card-title>
+    <mat-card-title *ngIf="this.creatingUser == true" style="margin-bottom: 50px;">Create Account</mat-card-title>
+    <mat-card-content class="cardContent" *ngIf="this.creatingUser == false">
+        <div class="loginForm">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="Username" [(ngModel)]="username">
+            </mat-form-field>
+            
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" type="password" [(ngModel)]="password">
+            </mat-form-field>
+            
+            <button mat-flat-button class="loginButton" (click)="login()">Login</button>
+            <button mat-flat-button class="loginButton" (click)="this.creatingUser = true">Don't have a user? Create One!</button>
+
+        </div>
+    </mat-card-content>
+
+    <mat-card-content class="cardContent" *ngIf="this.creatingUser == true">
+        <div class="loginForm">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="Username" [(ngModel)]="newUser">
+            </mat-form-field>
+            
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" type="password" [(ngModel)]="newPassword">
+            </mat-form-field>
+            
+            <button mat-flat-button class="loginButton" (click)="createUser()">Create Account</button>
+            <button mat-flat-button class="loginButton" (click)="this.creatingUser = false">Already registered? Log in!</button>
+
+
+        </div>
+    </mat-card-content>
+</mat-card>

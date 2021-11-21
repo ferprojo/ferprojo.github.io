@@ -1,0 +1,12 @@
+<div class="container" *ngIf="this.guide != null">
+    <mat-card class="guidesCard">
+        <mat-card-header>
+            <mat-card-title>{{this.guide.Title}}</mat-card-title>
+            <mat-card-subtitle>{{this.guide.PublishDate.toDate()}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            {{this.guide.Content}}
+        </mat-card-content>
+    </mat-card>
+</div>
+
