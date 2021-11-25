@@ -19,12 +19,11 @@ export class ChatroomsComponent implements OnInit, OnDestroy {
 
   constructor(private chatroomService: ChatroomsService, private loginService: LoginService) {  
     this.user = LoginService.user;
-    console.log(this.user)
     
-    this.chatroomService.getRecentMessages().subscribe((res) => {
+    this.sub = this.chatroomService.getRecentMessages().subscribe((res) => {
       this.messages = res;
     });
-    this.sub = interval(10000).subscribe((val) => {
+    /*this.sub = interval(10000).subscribe((val) => {
       let date = new Date(this.messages[this.messages.length - 1].Date.toDate());
       console.log(date)
       console.log(this.messages[this.messages.length - 1].Date.toDate())
@@ -34,7 +33,7 @@ export class ChatroomsComponent implements OnInit, OnDestroy {
           this.messages = this.messages.concat(res)
         }
       }) 
-    });
+    });*/
   }
 
   ngOnInit(): void {

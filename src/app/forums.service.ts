@@ -27,7 +27,7 @@ export class ForumsService {
   }
 
   getPostsByThreadId(threadID: string){
-    let posts = this.afs.collection("ForumPosts", ref=>ref.where("ThreadID", "==", threadID));
+    let posts = this.afs.collection("ForumPosts", ref=>ref.where("ThreadID", "==", threadID).orderBy("Date", 'asc'));
     return posts.valueChanges({idField: "ID"});
   }
 
@@ -36,7 +36,9 @@ export class ForumsService {
     this.afs.collection("ForumPosts").doc().set({
       Content: message,
       Author: LoginService.user.Username,
-      ThreadID: threadID
+      ThreadID: threadID,
+      Date: new Date()
+
     })
   }
 

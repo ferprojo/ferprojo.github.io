@@ -1,8 +1,10 @@
 
 <mat-card class="loginCard" style="padding-top: 20px;">
-    <mat-card-title *ngIf="this.creatingUser == false" style="margin-bottom: 50px;">Log In</mat-card-title>
-    <mat-card-title *ngIf="this.creatingUser == true" style="margin-bottom: 50px;">Create Account</mat-card-title>
-    <mat-card-content class="cardContent" *ngIf="this.creatingUser == false">
+    <mat-card-title *ngIf="this.creatingUser() == false" style="margin-bottom: 50px;">Log In</mat-card-title>
+    <mat-card-title *ngIf="this.creatingUser() == true" style="margin-bottom: 50px;">Create Account</mat-card-title>
+    <mat-card-content class="cardContent" *ngIf="this.creatingUser() == false">
+        <p *ngIf="this.userWasCreated() == true" style="text-align: center;">User has been created!</p>
+        <p *ngIf="this.isPasswordIncorrect() == true" style="text-align: center; color: orange;">Incorrect username or password!</p>
         <div class="loginForm">
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Username</mat-label>
@@ -15,12 +17,14 @@
             </mat-form-field>
             
             <button mat-flat-button class="loginButton" (click)="login()">Login</button>
-            <button mat-flat-button class="loginButton" (click)="this.creatingUser = true">Don't have a user? Create One!</button>
+            <button mat-flat-button class="loginButton" (click)="setCreatingUser(true)">Don't have a user? Create One!</button>
 
         </div>
     </mat-card-content>
 
-    <mat-card-content class="cardContent" *ngIf="this.creatingUser == true">
+    <mat-card-content class="cardContent" *ngIf="this.creatingUser() == true">
+        <p *ngIf="this.didUserExist() == true" style="text-align: center; color: orange;">That username is not available, choose another username!</p>
+        <p *ngIf="this.invalidUserOrPassword == true" style="text-align: center; color: orange;">Invalid username or password</p>
         <div class="loginForm">
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Username</mat-label>
@@ -33,8 +37,7 @@
             </mat-form-field>
             
             <button mat-flat-button class="loginButton" (click)="createUser()">Create Account</button>
-            <button mat-flat-button class="loginButton" (click)="this.creatingUser = false">Already registered? Log in!</button>
-
+            <button mat-flat-button class="loginButton" (click)="setCreatingUser(false)">Already registered? Log in!</button>
 
         </div>
     </mat-card-content>

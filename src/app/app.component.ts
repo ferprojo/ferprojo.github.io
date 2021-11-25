@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,27 @@ import { LoginService } from './login.service';
 export class AppComponent {
   title = 'PIA';
 
-  constructor(private login: LoginService, private router: Router){}
+  public static user: any = null;
+  loggedIn = false;
+
+  constructor(private login: LoginService, private router: Router){
+    AppComponent.user = LoginService.user;
+    
+  }
 
   userButton():void{
     if(LoginService.user == null){this.router.navigate(['/Login'])}else{}
-    console.log("a")
+  }
+
+  getUsername(){
+    return AppComponent.user.Username;
+  }
+
+  getUser(){
+    return LoginService.user;
+  }
+
+  logOut(){
+    LoginService.user = null;
   }
 }

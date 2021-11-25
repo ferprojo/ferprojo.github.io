@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ForumsService } from '../forums.service';
 import { LoginService } from '../login.service';
 
@@ -16,7 +16,7 @@ export class ThreadComponent implements OnInit {
   newPost = "";
   user: any;
 
-  constructor(private route: ActivatedRoute, private forumsService: ForumsService) {
+  constructor(private route: ActivatedRoute, private forumsService: ForumsService, private router: Router) {
     this.user = LoginService.user;
     this.threadID = this.route.snapshot.paramMap.get('thread');
     this.forumsService.getThreadByID(this.threadID).subscribe((res:any) =>{
@@ -34,6 +34,10 @@ export class ThreadComponent implements OnInit {
     if(this.newPost != ""){
       this.forumsService.createPost(this.newPost, this.threadID);
     }
+  }
+
+  goToForum(){
+    this.router.navigate(["Forum", { forum: this.thread.ForumName }])
   }
 
 }

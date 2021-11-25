@@ -1,12 +1,17 @@
-<mat-toolbar style="background-color: #206955;">
-  <mat-toolbar-row>
+<mat-toolbar style="background-color: #206955; height: 20%;">
+  <mat-toolbar-row style="flex: 1; flex-basis: 70%;">
     <img src="../assets/Logo.png" style="height: 100%;"/>
     <span class="example-spacer"></span>
-    <button mat-icon-button (click)="userButton()">
+    <p *ngIf="this.getUser() == null" style="color: white; margin: auto;">Log In!</p>
+    <button mat-icon-button (click)="userButton()" *ngIf="this.getUser() == null">
       <mat-icon>account_circle</mat-icon>
     </button>
+    <p *ngIf="this.getUser() != null" style="color: white; margin: auto;">Welcome, {{this.getUser().Username}}</p>
+    <button mat-icon-button (click)="logOut()" *ngIf="this.getUser() != null">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
   </mat-toolbar-row>
-  <mat-toolbar-row style="background-color: #223f5d;">
+  <mat-toolbar-row style="background-color: #223f5d; flex: 1; flex-basis: 30%;">
     <span style="flex: 1;"></span>
     <button mat-flat-button color="primary" class="navButton" routerLink="/">Home</button>
     <button mat-flat-button color="primary" class="navButton" routerLink="/Guides">Guides</button>

@@ -1,5 +1,8 @@
 <div class="container">
     <mat-card class="threadCard" *ngIf="this.thread != null && this.posts != null">
+        <button mat-icon-button style="margin-bottom: 10px;" (click)="goToForum()">
+            <mat-icon>keyboard_backspace</mat-icon>
+        </button>
         <mat-card-header>
             <mat-card-title>{{this.thread.Title}}</mat-card-title>
         </mat-card-header>

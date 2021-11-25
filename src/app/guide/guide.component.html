@@ -1,5 +1,8 @@
 <div class="container" *ngIf="this.guide != null">
     <mat-card class="guidesCard">
+        <button mat-icon-button style="margin-bottom: 10px;" (click)="goToCategory()">
+            <mat-icon>keyboard_backspace</mat-icon>
+        </button>
         <mat-card-header>
             <mat-card-title>{{this.guide.Title}}</mat-card-title>
             <mat-card-subtitle>{{this.guide.PublishDate.toDate()}}</mat-card-subtitle>

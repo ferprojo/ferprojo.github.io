@@ -1,5 +1,8 @@
 <div class="container" *ngIf="this.guides">
     <mat-card class="guidesCard">
+        <button mat-icon-button style="margin-bottom: 10px;" routerLink="/Guides">
+            <mat-icon>keyboard_backspace</mat-icon>
+        </button>
         <mat-card-header>
             <mat-card-title></mat-card-title>
         </mat-card-header>
@@ -7,6 +10,7 @@
             <mat-list>
                 <li *ngFor="let guide of guides" class="guideItem" (click)="openGuide(guide.ID)">{{guide.Title}}</li>
             </mat-list>
+            <p style="text-align: center; color: orange;" *ngIf="this.guides.length < 1">Currently there are no guides for this category.</p>
         </mat-card-content>
     </mat-card>
 </div>
