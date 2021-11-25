@@ -33,5 +33,6 @@ export class AppComponent {
 
   logOut(){
     LoginService.user = null;
+    this.router.navigate(["/"])
   }
 }

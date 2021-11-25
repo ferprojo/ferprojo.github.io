@@ -3,11 +3,11 @@
     <img src="../assets/Logo.png" style="height: 100%;"/>
     <span class="example-spacer"></span>
     <p *ngIf="this.getUser() == null" style="color: white; margin: auto;">Log In!</p>
-    <button mat-icon-button (click)="userButton()" *ngIf="this.getUser() == null">
+    <button mat-icon-button (click)="userButton()" *ngIf="this.getUser() == null" style="color: white;">
       <mat-icon>account_circle</mat-icon>
     </button>
     <p *ngIf="this.getUser() != null" style="color: white; margin: auto;">Welcome, {{this.getUser().Username}}</p>
-    <button mat-icon-button (click)="logOut()" *ngIf="this.getUser() != null">
+    <button mat-icon-button (click)="logOut()" *ngIf="this.getUser() != null" style="color: white;">
       <mat-icon>exit_to_app</mat-icon>
     </button>
   </mat-toolbar-row>

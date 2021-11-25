@@ -11,9 +11,9 @@
             <mat-list>
                 <div *ngFor="let post of this.posts">
                     <mat-list-item>
-                        <div >Author: {{post.Author}}</div>
+                        <div style="color: white;">Author: {{post.Author}}</div>
                         <span style="flex: 1;"></span>
-                        <div >{{post.Content}}</div>
+                        <div style="color: white;">{{post.Content}}</div>
                     </mat-list-item>
                     <mat-divider></mat-divider>
                 </div>
@@ -22,6 +22,10 @@
                 <textarea style="margin-top: 10px; width: 100%; display: inline-block; resize: none; height: 100%; background-color: #223f5dAA; color: white;" [(ngModel)]="this.newPost"></textarea>
                 <button mat-flat-button style="margin-top: 10px; width: 100%; height: 100%; display: inline-block; flex: 1 1 20%; background-color: #6d58a3;" (click)="createPost()">Send</button>
             </div>
+            <div style="width: 100%; margin: auto; display: flex; justify-content: center; align-items: center; height: 20%;" *ngIf="this.user == null || this.user.Username == null">
+                <p style="text-align: center; color: orange">You must login to post a message!</p>
+            </div>
+
             
         </mat-card-content>
     </mat-card>
